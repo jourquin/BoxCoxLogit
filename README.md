@@ -7,8 +7,8 @@ of the explanatory variable(s).
 
 ## Input data
 The model can be used when observations are not individual but aggregated. 
-This is for instance the case when on observed transported quantities, 
-such as tons, between origin and destinations. The provided sample dataset 
+This is for instance the case when one observe transported quantities, 
+such as tons, between origins and destinations. The provided sample dataset 
 (sampleData.Rda) contains, for every origin-destination pair, the 
 following data:
 -	The ID of the origin ORG and the ID of the destination DST
@@ -53,7 +53,7 @@ bivariate model, for which a combination of two lambdas’ (one for each
 explanatory variable) must be found.
 
 ## Model 1: The univariate case
-This model (BoxCox1Logit.R) uses the unit transportation cost or transit 
+This model (BoxCoxLogit1.R) uses the unit transportation cost or transit 
 time as only explanatory variable. The aim is here to increase the 
 log-likelihood of the model using an “optimal” lambda. Therefore, all 
 the values in the [-2,2] range are tested, with a step of 0.1.
@@ -64,7 +64,7 @@ Network Model: An Applied Methodological Framework*, Journal of
 Transportation Technologies, 2019, 9, 1-13](https://doi.org/10.4236/jtts.2019.91001).
 
 ## Model 2: The bivariate case
-"BoxCox2Logit.R" illustrates the case of a model with two explanatory 
+"BoxCoxLogit2.R" illustrates the case of a model with two explanatory 
 variables: the unit transportation cost and the transit time (duration). 
 In this case, the Box-Cox transform is used not only to improve the 
 log-likelihood of the model, but also to obtain the expected signs for 
@@ -83,7 +83,7 @@ transport*, Transport Policy, 83, 1-12, 2019](https://doi.org/10.1016/j.tranpol.
 ## Output
 Both scripts print the estimated model (values of the estimators, t-values,
 log-likelihood...) in the console and a spreadsheet-style data viewer with
-the actual and estimated transported quantities per mode on each ORG-DST 
+the actual and estimated transported quantities per mode for each ORG-DST 
 relation. Finally, the correlations between observed and estimated 
 quantities are also printed in the console.
 
@@ -98,7 +98,8 @@ To start with, the user has to gather the input data needed to estimate
 the parameters (a dataset which structure is similar to the one of 
 “sampleData.Rda”, but specific to the case to handle). The unit 
 transportation costs and transit times per mode can be obtained by means of 
-an assignment with “save paths” checked (“detailed paths” is not needed). 
+an assignment with “save paths” checked (“detailed paths” is not needed)
+in the Nodus "assignment" panel. 
 In the “header” table resulting from this assignment, one can find, for 
 each OD pair (and each “group of commodities”) the unit transportation 
 costs and transit times (note that these are expressed in seconds and 
@@ -118,7 +119,7 @@ cut&pasted in a Nodus “.costs” file. Example:
     cost.3.0=-0.580586230137904 
 
 The "plugin" directory contains two user-defined modal choice 
-plugins for Nodus. 
+plugins for Nodus that can make use of these parameters. 
 
 ## Further improvements
 The strategies used to find the optimal lambda's in the two models needs 
