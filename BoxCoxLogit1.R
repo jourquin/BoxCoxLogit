@@ -135,6 +135,9 @@ solveBoxCoxLogit <- function(x, modelID, lambda) {
 # Real entry point  ##################################################
 ######################################################################
 
+# Change working directory to the location of this script
+this.dir <- dirname(parent.frame(2)$ofile)
+setwd(this.dir)
 
 ######################################################################
 # 1) Find the best lambda value (from -2 to +2, using a step of 0.1)
@@ -242,8 +245,9 @@ df$est_qty1 = round(df$totQty * exp(df$utility1) / df$denominator)
 df$est_qty2 = round(df$totQty * exp(df$utility2) / df$denominator)
 df$est_qty3 = round(df$totQty * exp(df$utility3) / df$denominator)
 
-# View the estimated tonnages
-View(df)
+# View the estimated tonnages for the first 100 rows
+cat("\nFirst rows of input data and estimations. Note that costs and durations are Box-Cox transformed here:\n");
+print(head(df, 100))
 
 # Compute a simple correlation between observed and estimated quantities
 cat ("\nCorrelations between observed and estimated quantities: ")

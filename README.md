@@ -82,10 +82,9 @@ transport*, Transport Policy, 83, 1-12, 2019](https://doi.org/10.1016/j.tranpol.
 
 ## Output
 Both scripts print the estimated model (values of the estimators, t-values,
-log-likelihood...) in the console and a spreadsheet-style data viewer with
-the actual and estimated transported quantities per mode for each ORG-DST 
-relation. Finally, the correlations between observed and estimated 
-quantities are also printed in the console.
+log-likelihood...), the 100 first rows of the input data along with the
+related estimated quantities and the correlations between observed and 
+estimated quantities.
 
 ## Use of the estimators in the Nodus software
 [Nodus](http://nodus.uclouvain.be) is a transportation network modeling 
