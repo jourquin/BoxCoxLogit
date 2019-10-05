@@ -41,6 +41,11 @@ solveBoxCoxLogit <- function(x, modelID, lambda) {
     x$cost2[is.na(x$cost2)] = highValue
     x$cost3[is.na(x$cost3)] = highValue
     
+    # Remove the other variable
+    x$duration1 = NULL
+    x$duration2 = NULL
+    x$duration3 = NULL
+    
     # Box-Cox transform the variable
     if (lambda != 0) {
       x$cost1 = (x$cost1 ^ lambda - 1) / lambda
@@ -63,6 +68,11 @@ solveBoxCoxLogit <- function(x, modelID, lambda) {
     x$duration1[is.na(x$duration1)] = highValue
     x$duration2[is.na(x$duration2)] = highValue
     x$duration3[is.na(x$duration3)] = highValue
+    
+    # Remove the other variable
+    x$cost1 = NULL
+    x$cost2 = NULL
+    x$cost3 = NULL
     
     # Box-Cox transform the variable
     if (lambda != 0) {
@@ -246,7 +256,7 @@ df$est_qty2 = round(df$totQty * exp(df$utility2) / df$denominator)
 df$est_qty3 = round(df$totQty * exp(df$utility3) / df$denominator)
 
 # View the estimated tonnages for the first 100 rows
-cat("\nFirst rows of input data and estimations. Note that costs and durations are Box-Cox transformed here:\n");
+cat("\nFirst rows of input data and estimations. Note that costs (or durations) are Box-Cox transformed here:\n");
 print(head(df, 100))
 
 # Compute a simple correlation between observed and estimated quantities
