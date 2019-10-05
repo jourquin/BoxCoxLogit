@@ -110,7 +110,6 @@ solveBoxCoxLogit <- function(x, lambdaCost, lambdaTime) {
     f,
     longData,
     weights = wideData$qty,  # This is a weighted logit
-    na.rm = FALSE,
     ncores = nbCores
   )
   
@@ -142,6 +141,9 @@ signsAreExpected <- function(model) {
 # Change working directory to the location of this script
 this.dir <- dirname(parent.frame(2)$ofile)
 setwd(this.dir)
+
+# Change the output width
+options(width=200)
 
 ###############################
 # 1) Find the best lambda value

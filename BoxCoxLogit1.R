@@ -134,7 +134,6 @@ solveBoxCoxLogit <- function(x, modelID, lambda) {
     f,
     longData,
     weights = wideData$qty, # This is a weighted logit
-    na.rm = FALSE,
     ncores = nbCores
   )
   
@@ -148,6 +147,9 @@ solveBoxCoxLogit <- function(x, modelID, lambda) {
 # Change working directory to the location of this script
 this.dir <- dirname(parent.frame(2)$ofile)
 setwd(this.dir)
+
+# Change the output width
+options(width=200)
 
 ######################################################################
 # 1) Find the best lambda value (from -2 to +2, using a step of 0.1)
@@ -166,14 +168,21 @@ while (lambda <= threshold) {
 
   load("sampleData.Rda")
   
-  r = solveBoxCoxLogit(sampleData, modelID, lambda)
-  
-  # Keep this lambda if better log-likelihood
-  if (r$model$logLik > bestLL) {
-    bestLL = r$model$logLik
-    bestLambda = lambda
+  # Some lambda's can lead to numerical singularity
+  # This code intercepts the error and ignore it before running the
+  # next loop
+  res <- try ({ 
+    r = solveBoxCoxLogit(sampleData, modelID, lambda)
+      
+    if (r$model$logLik > bestLL) { # Better solution ?
+      bestLL = r$model$logLik
+      bestLambda = lambda
+    }
+  }, silent = TRUE)
+  if (inherits(res, "try-error")) {
+    # Just ignore error
   }
-  
+   
   lambda = round(lambda + step, 1) # Next step
 }
 
