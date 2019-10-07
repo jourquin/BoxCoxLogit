@@ -110,12 +110,12 @@ estimators. If "printNodusEstimators" is set to TRUE in the R script,
 the estimators are printed in a format that can directly be 
 cut&pasted in a Nodus “.costs” file. Example:
 
-    lambda.0=0.3
-    (Intercept).2.0=-2.08042624349219
-    (Intercept).3.0=-2.87138806698273
-    cost.1.0=-0.580586230137904
-    cost.2.0=-0.580586230137904
-    cost.3.0=-0.580586230137904 
+    lambda.0=0.7
+    (Intercept).2.0=-4.14188571102275
+    (Intercept).3.0=-4.34237545509826
+    cost.1.0=-0.709553978510067
+    cost.2.0=-0.709553978510067
+    cost.3.0=-0.709553978510067
 
 The "plugin" directory contains two user-defined modal choice 
 plugins for Nodus that can make use of these parameters. 
