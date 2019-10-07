@@ -98,6 +98,13 @@ solveLogit <- function(x) {
 # Real entry point  ##################################################
 ######################################################################
 
+# Change working directory to the location of this script
+this.dir <- dirname(parent.frame(2)$ofile)
+setwd(this.dir)
+
+# Change the output width
+options(width=200)
+
 load("sampleData.Rda")
 
 r = solveLogit(sampleData)
