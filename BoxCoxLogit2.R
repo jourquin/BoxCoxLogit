@@ -4,8 +4,10 @@
 # Written by Pr Bart Jourquin, bart.jourquin@uclouvain.be
 #
 # R script showing how to implement a bivariate (conditional) multinomial logit with a Box-Cox transform of the 2 explanatory
-# variables when the following input data is available for an origin-destination pair: - Origin and a destinataion ID's - Unit cost
-# (or duration) for each mode on the OD relation - Observed demand (tons for instance) for each mode between O and D
+# variables when the following input data is available for an origin-destination pair: 
+# - Origin and a destinataion ID's 
+# - Unit cost (or duration) for each mode on the OD relation 
+# - Observed demand (tons for instance) for each mode between O and D
 #
 # The script looks for the optimal combination of lambda's to apply for the Box-Cox transformation and uses the obtained parameters
 # for the logit model to estimate the demand (tons) for each mode on each OD relation.

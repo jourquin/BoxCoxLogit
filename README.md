@@ -53,10 +53,13 @@ bivariate model, for which a combination of two lambdas’ (one for each
 explanatory variable) must be found.
 
 ## Model 1: The univariate case
-This model (BoxCoxLogit1.R) uses the unit transportation cost or transit 
-time as only explanatory variable. The aim is here to increase the 
-log-likelihood of the model using an “optimal” lambda. Therefore, all 
-the values in the [-2,2] range are tested, with a step of 0.1.
+The "Logit1.R" script illustrates a simple univariate model that uses the
+unit transportation cost (or transit time) as only explanatory variable.
+
+"BoxCoxLogit1.R" uses the same explanatory variable, but applies a Box-Cox
+transform to it. The aim is here  to increase the log-likelihood of 
+the model using an “optimal” lambda. Therefore, all the values in 
+the [-2,2] range are tested, with a step of 0.1.
 
 This model is described and used with real datasets in 
 [**Jourquin B.**, *Estimating Elasticities for Freight Transport Using a 
@@ -64,16 +67,18 @@ Network Model: An Applied Methodological Framework*, Journal of
 Transportation Technologies, 2019, 9, 1-13](https://doi.org/10.4236/jtts.2019.91001).
 
 ## Model 2: The bivariate case
-"BoxCoxLogit2.R" illustrates the case of a model with two explanatory 
-variables: the unit transportation cost and the transit time (duration). 
-In this case, the Box-Cox transform is used not only to improve the 
-log-likelihood of the model, but also to obtain the expected signs for 
-the estimators. These must indeed be negative for both variables as the 
-modal share is expected to decrease for a mode when its cost or transit 
-time increase. However, as both variables are (heavily) correlated, the 
-sign of one of the estimators can very well be positive. Using a Box-Cox 
-transform on both variables with an adequate combination of lambda’s can 
-solve the problem.
+The "Logit2.R" script illustrates the case of a model with two explanatory 
+variables: the unit transportation cost and the transit time (duration).
+It shows that, without a propre transform of the variables, the sign of
+an estimator can be wrong. In this case, the estimator for the "duration"
+variable is positive. This is not expected as the modal share of a 
+transportation mode should decrease when its transit time increases. This
+unexpected sign is related to the fact that both explanatory variables
+are heavily correlated.
+
+"BoxCoxLogit2.R" applies a Box-Cox transform, looking for the "best" 
+lambda's, not only to improve the log-likelihood of the model, but also 
+to obtain the expected signs for the estimators. 
 
 This model is thoroughly described and discussed when used with real 
 World datasets in [**Jourquin B. and Beuthe M.**, *Cost, transit time 
