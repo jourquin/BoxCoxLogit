@@ -36,6 +36,10 @@ The models are written in [R](https://www.r-project.org) and use the
 and [‘mnlogit’](https://cran.r-project.org/web/packages/mnlogit/index.html) 
 packages.
 
+> **_NOTE:_**  'mlogit' version >= 1.1 seems to break the code. I'll have
+a closer look to the problem. In the meantime, please  use version 1.0-3, 
+which tarball is provided in this repository. 
+
 ## Why Box-Cox transformations?
 The Box-Cox transformation is a well-known 
 [power transform](https://en.wikipedia.org/wiki/Power_transform#Box–Cox_transformation). 
