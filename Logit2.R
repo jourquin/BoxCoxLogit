@@ -82,11 +82,15 @@ solveLogit <- function(x) {
       varying = 2:7
     ) # First column is "mode", variables are in columns 2 to 7.
 
+  # mlogit version 1.1 returns a dfidx object, but mnlogit only accepts data frames for now
+  # Be sure to have a dataframe
+  longData = as.data.frame(longData)
 
   # Solve the model, using the mnlogit package, faster (parallelized) that mlogit
   nbCores <- parallel:::detectCores()
   model <- mnlogit(
     f,
+    choiceVar = "alt",
     longData,
     weights = wideData$qty, # This is a weighted logit
     na.rm = FALSE,
