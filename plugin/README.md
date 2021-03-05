@@ -9,6 +9,7 @@ directory. The corresponding modal choice model(s) will then appear among
 the available possibilities in the “multi-flow” assignment tab. Note that 
 precompiled .jar files are also provided.
 
+Versions are provided for Nodus 7.x and 8.x.
 
 
 
